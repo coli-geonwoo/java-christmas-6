@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static View.Constants.FREEITEM_EVENT_PRICE;
+
 
 public class Foods {
     private List<Food> orderedFoods = new ArrayList<>();
@@ -33,6 +35,20 @@ public class Foods {
         cntCategory();
         return categoryCnt;
     }
+
+    public boolean freeItemEvent(){
+        int sum= gettotalFoodPrice();
+        return (sum>=FREEITEM_EVENT_PRICE);
+    }
+
+    public boolean saleTrueorFalse(){
+        int sum= gettotalFoodPrice();
+        if(sum<10000){return false;}
+
+        return true;
+    }
+
+
     //차례대로 에피타이저-메인메뉴-디저트-음료 cnt 리스트 반환
     private int[] cntCategory(){
 
