@@ -84,6 +84,15 @@ public class UserTest {
         assertEquals(categoryCnt[1],2);
     }
 
+    @Test
+    @DisplayName("20개를 넘는 주문을 했을 경우")
+    void readOrder_test2(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputView view= new InputView();
+            Foods foods= view.readOrder("해산물파스타-2,레드와인-22");
+        });
+    }
+    
     @DisplayName("할인금액이 잘 나오는지 확인")
     @Test
     void salePrice_test(){
