@@ -36,17 +36,26 @@ public class UserTest {
 
     @DisplayName("Food객체에 알맞은 이름을 넣었을 때")
     void food_test1(){
-        Food food= new Food("크리스마스파스타",2);
+        Food food= new Food("크리스마스파스타","2");
         assertEquals(food.getName(), "크리스마스파스타");
         assertEquals(food.getPrice(), 25000);
         assertEquals(food.getCategory(),"MAIN");
     }
 
+
     @Test
     @DisplayName("Food객체에 메뉴판에 없는 이름을 넣었을 때")
     void food_test2(){
         assertThrows(IllegalArgumentException.class, () -> {
-            Food food= new Food("봉골레파스타",2);
+            Food food= new Food("봉골레파스타","2");
+        });
+    }
+
+    @Test
+    @DisplayName("Food객체에 잘못된 범위의 cnt값이 들어왔을 때")
+    void food_test3(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            Food food= new Food("봉골레파스타","-2");
         });
     }
 }
