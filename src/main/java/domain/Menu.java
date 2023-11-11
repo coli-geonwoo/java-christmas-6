@@ -27,5 +27,5 @@ public enum  Menu {
 
     public int getPrice(){return price;}
     public String getCategory(){return category;}
-    private boolean match(String name){return name.equals(this.name);}
+    public String getName(){ return name;}
 }
