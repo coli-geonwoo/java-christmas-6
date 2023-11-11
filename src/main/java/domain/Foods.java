@@ -30,6 +30,7 @@ public class Foods {
         orderedFoods.add(food);
     }
     public int [] getcategoryCnt(){
+        cntCategory();
         return categoryCnt;
     }
     //차례대로 에피타이저-메인메뉴-디저트-음료 cnt 리스트 반환
@@ -37,18 +38,18 @@ public class Foods {
 
         for(Food food: orderedFoods) {
             if (food.getCategory().equals("APPETIZER")) {
-                categoryCnt[0] += 1;
+                categoryCnt[0] += food.getCnt();
                 continue;
             }
             if (food.getCategory().equals("MAIN")) {
-                 categoryCnt[1]+= 1;
+                 categoryCnt[1]+= food.getCnt();
                  continue;
             }
             if(food.getCategory().equals("DESSERT")){
-                categoryCnt[2]+=1;
+                categoryCnt[2]+=food.getCnt();
                 continue;
             }
-            categoryCnt[3]+=1;
+            categoryCnt[3]+=food.getCnt();
 
         }
 
