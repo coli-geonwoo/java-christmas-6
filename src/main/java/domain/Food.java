@@ -2,6 +2,9 @@ package domain;
 
 import java.util.*;
 
+import static View.NumValidator.checkCntRange;
+import static View.NumValidator.checkIsNumber;
+
 public class Food {
 
     private int price;
@@ -9,10 +12,10 @@ public class Food {
     private String name;
     private int cnt;
 
-    Food(String name, int cnt){
+    public Food(String name, String cnt){
         Menu menu= findMenu(name);
         this.name= menu.getName();
-        this.cnt= cnt;
+        this.cnt= checkValidCnt(cnt);
         this.price=menu.getPrice();
         this.category= menu.getCategory();
     }
@@ -38,5 +41,10 @@ public class Food {
             }
         }
         throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해주세요");
+    }
+    private int checkValidCnt(String cnt){
+        int num = checkIsNumber(cnt);
+        checkCntRange(num);
+        return num;
     }
 }

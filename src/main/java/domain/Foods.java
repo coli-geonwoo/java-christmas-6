@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 
 public class Foods {
     private List<Food> orderedFoods = new ArrayList<>();
-    private int mainCnt;
-    private int dessertCnt;
-    private int totalFoodCnt;
-    private int totalFoodPrice;
+    private int mainCnt=0;
+    private int dessertCnt=0;
+    private int totalFoodCnt=0;
+    private int totalFoodPrice=0;
 
     public void appendFood(Food food){
         checkDuplicateMenu(food.getName());
