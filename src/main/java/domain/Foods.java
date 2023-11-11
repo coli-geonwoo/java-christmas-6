@@ -9,7 +9,6 @@ import static View.Constants.FREEITEM_EVENT_PRICE;
 
 public class Foods {
     private List<Food> orderedFoods = new ArrayList<>();
-    private int [] categoryCnt = {0,0,0,0};
 
     public int gettotalFoodPrice(){
         int sum=0;
@@ -32,8 +31,8 @@ public class Foods {
         orderedFoods.add(food);
     }
     public int [] getcategoryCnt(){
-        cntCategory();
-        return categoryCnt;
+        return  cntCategory();
+
     }
 
     public boolean freeItemEvent(){
@@ -51,6 +50,7 @@ public class Foods {
 
     //차례대로 에피타이저-메인메뉴-디저트-음료 cnt 리스트 반환
     private int[] cntCategory(){
+        int [] categoryCnt={0,0,0,0};
 
         for(Food food: orderedFoods) {
             if (food.getCategory().equals("APPETIZER")) {
