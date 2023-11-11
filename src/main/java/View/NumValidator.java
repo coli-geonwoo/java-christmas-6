@@ -1,6 +1,6 @@
 package View;
 
-public class DateValidator {
+public class NumValidator {
 
     private static final String UNVALID_DATE_MESSAGE= "[ERROR] 유효하지 않은 주문입니다. 다시 입력해주세요";
     private static final int MONTH_START_DATE=1;
