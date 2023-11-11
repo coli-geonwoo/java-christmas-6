@@ -77,8 +77,9 @@ public class UserTest {
         InputView view= new InputView();
         Foods foods= view.readOrder("해산물파스타-2,레드와인-1");
         assertEquals(foods.gettotalFoodPrice(), 130000);
+        int [] categoryCnt= foods.cntCategory();
         assertEquals(foods.gettotalFoodCnt(), 3);
-        assertEquals(foods.getmainCnt(),2);
+        assertEquals(categoryCnt[1],2);
     }
 
 }

@@ -7,8 +7,6 @@ import java.util.stream.Collectors;
 
 public class Foods {
     private List<Food> orderedFoods = new ArrayList<>();
-    private int mainCnt=0;
-    private int dessertCnt=0;
 
     public int gettotalFoodPrice(){
         int sum=0;
@@ -25,27 +23,33 @@ public class Foods {
         return sum;
     }
 
-    public int getmainCnt(){
-        return mainCnt;
-    }
-
-    public int getDessertCnt(){
-        return dessertCnt;
-    }
 
     public void appendFood(Food food){
         checkDuplicateMenu(food.getName());
-        cntCategory(food);
         orderedFoods.add(food);
     }
 
-    private void cntCategory(Food food){
-        if(food.getCategory().equals("MAIN")){
-            mainCnt+=1;
+    public int[] cntCategory(){
+        int [] categoryCnt = {0,0,0,0};
+
+        for(Food food: orderedFoods) {
+            if (food.getCategory().equals("APPETIZER")) {
+                categoryCnt[0] += 1;
+                continue;
+            }
+            if (food.getCategory().equals("MAIN")) {
+                 categoryCnt[1]+= 1;
+                 continue;
+            }
+            if(food.getCategory().equals("DESSERT")){
+                categoryCnt[2]+=1;
+                continue;
+            }
+            categoryCnt[3]+=1;
+
         }
-        if(food.getCategory().equals("DESSERT")){
-            dessertCnt+=1;
-        }
+
+        return categoryCnt;
     }
     private void checkDuplicateMenu(String name){
         List<String> names= orderedFoods.stream().map(Food::getName).collect(Collectors.toList());
