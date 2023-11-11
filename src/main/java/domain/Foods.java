@@ -11,6 +11,20 @@ public class Foods {
     private int dessertCnt=0;
     private int totalFoodCnt=0;
     private int totalFoodPrice=0;
+    public int gettotalFoodPrice(){
+        return totalFoodPrice;
+    }
+    public int gettotalFoodCnt(){
+        return totalFoodCnt;
+    }
+
+    public int getmainCnt(){
+        return mainCnt;
+    }
+
+    public int getDessertCnt(){
+        return dessertCnt;
+    }
 
     public void appendFood(Food food){
         checkDuplicateMenu(food.getName());
