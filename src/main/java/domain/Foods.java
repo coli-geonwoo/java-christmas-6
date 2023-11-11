@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class Foods {
     private List<Food> orderedFoods = new ArrayList<>();
+    private int [] categoryCnt = {0,0,0,0};
 
     public int gettotalFoodPrice(){
         int sum=0;
@@ -28,10 +29,11 @@ public class Foods {
         checkDuplicateMenu(food.getName());
         orderedFoods.add(food);
     }
-
+    public int [] getcategoryCnt(){
+        return categoryCnt;
+    }
     //차례대로 에피타이저-메인메뉴-디저트-음료 cnt 리스트 반환
-    public int[] cntCategory(){
-        int [] categoryCnt = {0,0,0,0};
+    private int[] cntCategory(){
 
         for(Food food: orderedFoods) {
             if (food.getCategory().equals("APPETIZER")) {
@@ -59,5 +61,8 @@ public class Foods {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
     }
+
+
+
 
 }
