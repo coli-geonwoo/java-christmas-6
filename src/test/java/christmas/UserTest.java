@@ -1,6 +1,7 @@
 package christmas;
 import View.InputView;
 import domain.Food;
+import domain.Foods;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -58,4 +59,17 @@ public class UserTest {
             Food food= new Food("봉골레파스타","-2");
         });
     }
+
+    @Test
+    @DisplayName("중복된 food를 list에 넣으려 할 때")
+    void duplicate_check(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            Food food1= new Food("봉골레파스타","2");
+            Food food2= new Food("봉골레파스타","2");
+            Foods foods= new Foods();
+            foods.appendFood(food1);
+            foods.appendFood(food2);
+        });
+    }
+
 }
