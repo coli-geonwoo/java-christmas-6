@@ -72,4 +72,13 @@ public class UserTest {
         });
     }
 
+    @DisplayName("readOrder이 잘작동하는지 확인")
+    void readOrder_test1(){
+        InputView view= new InputView();
+        Foods foods= view.readOrder("해산물파스타-2,레드와인-1");
+        assertEquals(foods.gettotalFoodPrice(), 130000);
+        assertEquals(foods.gettotalFoodCnt(), 3);
+        assertEquals(foods.getmainCnt(),2);
+    }
+
 }
