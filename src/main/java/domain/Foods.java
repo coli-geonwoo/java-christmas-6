@@ -29,6 +29,7 @@ public class Foods {
         orderedFoods.add(food);
     }
 
+    //차례대로 에피타이저-메인메뉴-디저트-음료 cnt 리스트 반환
     public int[] cntCategory(){
         int [] categoryCnt = {0,0,0,0};
 
