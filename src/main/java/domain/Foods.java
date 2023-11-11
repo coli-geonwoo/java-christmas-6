@@ -9,13 +9,20 @@ public class Foods {
     private List<Food> orderedFoods = new ArrayList<>();
     private int mainCnt=0;
     private int dessertCnt=0;
-    private int totalFoodCnt=0;
-    private int totalFoodPrice=0;
+
     public int gettotalFoodPrice(){
-        return totalFoodPrice;
+        int sum=0;
+        for(Food food : orderedFoods){
+            sum+=food.getPrice()*food.getCnt();
+        }
+        return sum;
     }
     public int gettotalFoodCnt(){
-        return totalFoodCnt;
+        int sum=0;
+        for(Food food : orderedFoods){
+            sum+=food.getCnt();
+        }
+        return sum;
     }
 
     public int getmainCnt(){
@@ -29,8 +36,6 @@ public class Foods {
     public void appendFood(Food food){
         checkDuplicateMenu(food.getName());
         cntCategory(food);
-        totalFoodPrice+=food.getPrice()*food.getCnt();
-        totalFoodCnt+= food.getCnt();
         orderedFoods.add(food);
     }
 
