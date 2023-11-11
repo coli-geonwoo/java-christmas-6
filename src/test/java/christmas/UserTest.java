@@ -1,5 +1,6 @@
 package christmas;
 import View.InputView;
+import domain.Discount;
 import domain.Food;
 import domain.Foods;
 import org.junit.jupiter.api.DisplayName;
@@ -73,13 +74,26 @@ public class UserTest {
     }
 
     @DisplayName("readOrder이 잘작동하는지 확인")
+    @Test
     void readOrder_test1(){
         InputView view= new InputView();
         Foods foods= view.readOrder("해산물파스타-2,레드와인-1");
         assertEquals(foods.gettotalFoodPrice(), 130000);
-        int [] categoryCnt= foods.cntCategory();
+        int [] categoryCnt= foods.getcategoryCnt();
         assertEquals(foods.gettotalFoodCnt(), 3);
         assertEquals(categoryCnt[1],2);
+    }
+
+    @DisplayName("할인금액이 잘 나오는지 확인")
+    @Test
+    void salePrice_test(){
+        Discount discount= new Discount();
+        int [] t1={0,1,0,0};
+        int [] t2={0,0,1,0};
+        int [] t3={0,0,0,0};
+        assertEquals(discount.calcTotalSale(1, t1), 3023);
+        assertEquals(discount.calcTotalSale(25,t2),6423);
+        assertEquals(discount.calcTotalSale(31,t3),1000);
     }
 
 }
