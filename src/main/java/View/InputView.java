@@ -3,9 +3,8 @@ package View;
 import domain.Food;
 import domain.Foods;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import static View.Constants.MAX_ORDER_ITEM_CNT;
 import static View.NumValidator.checkIsNumber;
 import static View.NumValidator.checkDateRange;
 
@@ -32,7 +31,8 @@ public class InputView {
             Food food= new Food(order[0], order[1]);
             temp.appendFood(food);
         }
-
+        checkOrderCnt(temp);
+        checkOrderNotOnlyDrink(temp);
         return temp;
     }
 
@@ -40,6 +40,22 @@ public class InputView {
         if(order.length!=2){
             throw new IllegalArgumentException("ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
+    }
+
+    private void checkOrderCnt(Foods food){
+        if(food.gettotalFoodCnt()<MAX_ORDER_ITEM_CNT){
+            return;
+        }
+        throw new IllegalArgumentException("ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
+
+    private void checkOrderNotOnlyDrink(Foods food){
+        int [] categoryCnt= food.getcategoryCnt();
+
+        if(categoryCnt[0]!=0 || categoryCnt[1]!=0 || categoryCnt[2]!=0){
+            return;
+        }
+        throw new IllegalArgumentException("ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
 
 }
