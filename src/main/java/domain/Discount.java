@@ -17,6 +17,20 @@ public class Discount {
         totalSale= (christMasSale+weekendSale+weekdaySale+specialSale);
         return totalSale;
     }
+
+    public String badgeEvent(){
+        if (totalSale>20000){
+            return "산타";
+        }
+        if(totalSale>10000){
+            return "트리";
+        }
+        if(totalSale>5000){
+            return "별";
+        }
+        return "없음";
+    }
+
     private int cntWeekDaySale(int day, int dessertCnt){
         int num= day%7;
         if(WEEKDAY_NUM_LIST.contains(num)){
