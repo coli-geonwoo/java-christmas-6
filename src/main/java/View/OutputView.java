@@ -15,8 +15,9 @@ public class OutputView {
     public static void printMenu(Foods foods) {
         System.out.println("<주문 메뉴>");
         for(Food food : foods.getFoodList()){
-            System.out.printf("%s %d개%n%n", food.getName(), food.getCnt());
+            System.out.printf("%s %d개%n", food.getName(), food.getCnt());
         }
+        System.out.println();
     }
 
     public static void printTotalPrice(Foods foods){
@@ -37,8 +38,7 @@ public class OutputView {
     public static int printSalePrices(Foods foods, int day, int itemcost){
         System.out.println("<혜택 내역>");
         if(!foods.saleTrueorFalse()){
-            System.out.println("없음");
-            System.out.println();
+            System.out.printf("없음%n%n");
             return 0;
         }
 
@@ -47,9 +47,10 @@ public class OutputView {
         for(String key : salePrices.keySet()){
             int num= salePrices.get(key);
             if(num!=0){
-                System.out.printf("%s: -%,d원%n%n", key, num);
+                System.out.printf("%s: -%,d원%n", key, num);
             }
         }
+        System.out.println();
 
         int freeItemSale=printFreeItemSale(foods, itemcost);
         return calc.getTotalSale()+freeItemSale;
@@ -66,9 +67,6 @@ public class OutputView {
 
     //총 할인 금액
     public static void printTotalSalePrice(Foods foods, int totalSale, int itemCost){
-        if(foods.freeItemEvent()){
-            totalSale+=itemCost;
-        }
         System.out.println("<총혜택 금액>");
         if(totalSale>0){
             System.out.printf("-");}
