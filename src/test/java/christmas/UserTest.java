@@ -100,9 +100,12 @@ public class UserTest {
         int [] t1={0,1,0,0};
         int [] t2={0,0,1,0};
         int [] t3={0,0,0,0};
-        assertEquals(discount.calcTotalSale(1, t1), 3023);
-        assertEquals(discount.calcTotalSale(25,t2),6423);
-        assertEquals(discount.calcTotalSale(31,t3),1000);
+        discount.getSalePrice(1, t1);
+        assertEquals(discount.getTotalSale(), 3023);
+        discount.getSalePrice(25,t2);
+        assertEquals(discount.getTotalSale(),6423);
+        discount.getSalePrice(31, t3);
+        assertEquals(discount.getTotalSale(),1000);
     }
 
 }
