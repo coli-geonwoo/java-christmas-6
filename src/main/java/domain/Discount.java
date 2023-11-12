@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.HashMap;
+
 import static View.Constants.*;
 
 public class Discount {
@@ -10,9 +12,14 @@ public class Discount {
     private int specialSale=0;
 
 
-    public int[] getSalePrice(int day, int [] categoryCnt){
+    public HashMap<String, Integer> getSalePrice(int day, int [] categoryCnt){
         calcTotalSale(day, categoryCnt);
-        int [] salePrices = {christMasSale, weekendSale, weekdaySale, specialSale};
+        HashMap<String, Integer> salePrices= new HashMap<String, Integer>(){{
+            put("크리스마스 디데이 할인", christMasSale);
+            put("주말 할인", weekendSale);
+            put("평일 할인", weekdaySale);
+            put("특별 할인", specialSale);
+        }};
         return salePrices;
 
     }
