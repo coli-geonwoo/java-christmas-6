@@ -9,13 +9,22 @@ public class Discount {
     private int weekdaySale=0;
     private int specialSale=0;
 
-    public int calcTotalSale(int day, int[] categoryCnt){
+
+    public int[] getSalePrice(int day, int [] categoryCnt){
+        calcTotalSale(day, categoryCnt);
+        int [] salePrices = {christMasSale, weekendSale, weekdaySale, specialSale};
+        return salePrices;
+
+    }
+    public int getTotalSale(){
+        return totalSale;
+    }
+    private void calcTotalSale(int day, int[] categoryCnt){
         christMasSale=cntChristmasSale(day);
         weekendSale=cntWeekendDaySale(day, categoryCnt[1]);
         weekdaySale=cntWeekDaySale(day, categoryCnt[2]);
         specialSale=cntSpecialSale(day);
         totalSale= (christMasSale+weekendSale+weekdaySale+specialSale);
-        return totalSale;
     }
 
     private int cntWeekDaySale(int day, int dessertCnt){
