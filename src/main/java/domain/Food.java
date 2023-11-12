@@ -2,6 +2,7 @@ package domain;
 
 import java.util.*;
 
+import static View.Messages.UNVALID_ORDER_MESSAGE;
 import static View.NumValidator.checkCntRange;
 import static View.NumValidator.checkIsNumber;
 
@@ -40,10 +41,10 @@ public class Food {
                 return menu;
             }
         }
-        throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해주세요");
+        throw new IllegalArgumentException(UNVALID_ORDER_MESSAGE);
     }
     private int checkValidCnt(String cnt){
-        int num = checkIsNumber(cnt);
+        int num = checkIsNumber(cnt,1);
         checkCntRange(num);
         return num;
     }

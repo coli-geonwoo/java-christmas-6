@@ -12,4 +12,6 @@ public class Constants {
     public static final int FREEITEM_EVENT_PRICE=120000;
     public static final int MAX_ORDER_ITEM_CNT=20;
 
+    public static final int FREEITEM_COST=25000;
+
 }

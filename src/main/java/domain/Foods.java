@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static View.Constants.FREEITEM_EVENT_PRICE;
+import static View.Messages.UNVALID_ORDER_MESSAGE;
 
 
 public class Foods {
@@ -78,7 +79,7 @@ public class Foods {
         List<String> names= orderedFoods.stream().map(Food::getName).collect(Collectors.toList());
 
         if (names.contains(name)){
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(UNVALID_ORDER_MESSAGE);
         }
     }
 

@@ -14,8 +14,6 @@ public enum  Menu {
     REDWINE("레드와인", 60000, "DRINK"),
     CHAMPAGNE("샴페인", 25000, "DRINK");
 
-    private static final String ERROR_MESSAGE="[ERROR] [ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
-
     private String name;
     private int price;
     private String category;

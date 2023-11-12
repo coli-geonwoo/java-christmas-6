@@ -7,6 +7,9 @@ import domain.Foods;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
+import static View.Messages.FREEITEM_EVENT_MESSAGE;
+import static View.Messages.NOTHING;
+
 public class OutputView {
 
     public static void printInstructions(int day){
@@ -29,16 +32,17 @@ public class OutputView {
     public static void printFreeItem(Foods foods){
         System.out.println("<증정 메뉴>");
         if(foods.freeItemEvent()){
-            System.out.printf("샴페인 1개%n%n");
+            System.out.println(FREEITEM_EVENT_MESSAGE);
+            System.out.println();
             return;
         }
-        System.out.printf("없음%n%n");
+        System.out.printf(NOTHING);
     }
     //전체 혜택내역
     public static int printSalePrices(Foods foods, int day, int itemcost){
         System.out.println("<혜택 내역>");
         if(!foods.saleTrueorFalse()){
-            System.out.printf("없음%n%n");
+            System.out.printf(NOTHING);
             return 0;
         }
 
@@ -96,7 +100,7 @@ public class OutputView {
             System.out.println("별");
             return;
         }
-        System.out.println("없음");
+        System.out.printf(NOTHING);
     }
 
 }

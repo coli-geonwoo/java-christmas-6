@@ -2,6 +2,9 @@ package Controller;
 import View.InputView;
 import View.OutputView;
 import domain.*;
+
+import static View.Constants.FREEITEM_COST;
+
 public class Controller {
     private static int day;
     private static Foods foods;
@@ -21,8 +24,8 @@ public class Controller {
         OutputView.printMenu(foods);
         OutputView.printTotalPrice(foods);
         OutputView.printFreeItem(foods);
-        int totalSale=OutputView.printSalePrices(foods, day, 25000);
-        int totalBenefit=OutputView.printTotalBenefitPrice(foods, totalSale, 25000);
+        int totalSale=OutputView.printSalePrices(foods, day, FREEITEM_COST);
+        int totalBenefit=OutputView.printTotalBenefitPrice(foods, totalSale, FREEITEM_COST);
         OutputView.printAfterSalePrice(foods, totalSale);
         OutputView.printBadgeEvent(totalBenefit);
     }
