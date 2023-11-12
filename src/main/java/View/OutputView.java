@@ -9,17 +9,19 @@ import java.util.HashMap;
 
 public class OutputView {
 
-    private static final DecimalFormat formatter = new DecimalFormat("###,###");
+    public static void printInstructions(int day){
+        System.out.printf("12월 %d일에 우테코 식당에서 받을 이벤트 미리보기!%n%n", day);
+    }
     public static void printMenu(Foods foods) {
         System.out.println("<주문 메뉴>");
         for(Food food : foods.getFoodList()){
-            System.out.printf("%s %d개%n", food.getName(), food.getCnt());
+            System.out.printf("%s %d개%n%n", food.getName(), food.getCnt());
         }
     }
 
     public static void printTotalPrice(Foods foods){
         System.out.println("<할인 전 총주문 금액>");
-        System.out.printf("%d원%n", formatter.format(foods.gettotalFoodPrice()));
+        System.out.printf("%,d원%n%n", foods.gettotalFoodPrice());
 
     }
 
@@ -29,14 +31,15 @@ public class OutputView {
             System.out.println("샴페인 1개");
             return;
         }
-        System.out.println("없음");
+        System.out.printf("없음%n%n");
     }
     //전체 혜택내역
-    public static void printSalePrices(Foods foods, int day, int itemcost){
+    public static int printSalePrices(Foods foods, int day, int itemcost){
         System.out.println("<혜택 내역>");
         if(!foods.saleTrueorFalse()){
             System.out.println("없음");
-            return;
+            System.out.println();
+            return 0;
         }
 
         Discount calc = new Discount();
@@ -44,32 +47,38 @@ public class OutputView {
         for(String key : salePrices.keySet()){
             int num= salePrices.get(key);
             if(num!=0){
-                System.out.printf("%s: -%d원%n", key, formatter.format(num));
+                System.out.printf("%s: -%,d원%n%n", key, num);
             }
         }
 
-        printFreeItemSale(foods, itemcost);
+        int freeItemSale=printFreeItemSale(foods, itemcost);
+        return calc.getTotalSale()+freeItemSale;
 
     }
 
-    private static void printFreeItemSale(Foods foods, int itemcost){
+    private static int printFreeItemSale(Foods foods, int itemcost){
         if(foods.freeItemEvent()){
-            System.out.printf("증정 이벤트: -%d원%n", formatter.format(itemcost));
+            System.out.printf("증정 이벤트: -%,d원%n%n", itemcost);
+            return itemcost;
         }
+        return 0;
     }
 
     //총 할인 금액
-    public static void printTotalSalePrice(int totalSale){
-        System.out.println("총혜택 금액>");
+    public static void printTotalSalePrice(Foods foods, int totalSale, int itemCost){
+        if(foods.freeItemEvent()){
+            totalSale+=itemCost;
+        }
+        System.out.println("<총혜택 금액>");
         if(totalSale>0){
             System.out.printf("-");}
-        System.out.printf("%d원%n", formatter.format(totalSale));
+        System.out.printf("%,d원%n%n", totalSale);
 
     }
 
     public static void printAfterSalePrice(Foods foods, int totalSale){
         System.out.println("<할인 후 예상 결제 금액>");
-        System.out.printf("%d원%n", formatter.format(foods.gettotalFoodPrice()-totalSale));
+        System.out.printf("%,d원%n%n", foods.gettotalFoodPrice()-totalSale);
 
     }
 
