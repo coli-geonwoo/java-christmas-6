@@ -29,7 +29,7 @@ public class OutputView {
     public static void printFreeItem(Foods foods){
         System.out.println("<증정 메뉴>");
         if(foods.freeItemEvent()){
-            System.out.println("샴페인 1개");
+            System.out.printf("샴페인 1개%n%n");
             return;
         }
         System.out.printf("없음%n%n");
@@ -50,10 +50,8 @@ public class OutputView {
                 System.out.printf("%s: -%,d원%n", key, num);
             }
         }
-        System.out.println();
-
-        int freeItemSale=printFreeItemSale(foods, itemcost);
-        return calc.getTotalSale()+freeItemSale;
+        printFreeItemSale(foods, itemcost);
+        return calc.getTotalSale();
 
     }
 
@@ -62,16 +60,20 @@ public class OutputView {
             System.out.printf("증정 이벤트: -%,d원%n%n", itemcost);
             return itemcost;
         }
+        System.out.println();
         return 0;
     }
 
     //총 할인 금액
-    public static void printTotalSalePrice(Foods foods, int totalSale, int itemCost){
+    public static int printTotalBenefitPrice(Foods foods, int totalSale, int itemCost){
+        if(foods.freeItemEvent()){
+            totalSale+=itemCost;
+        }
         System.out.println("<총혜택 금액>");
         if(totalSale>0){
             System.out.printf("-");}
         System.out.printf("%,d원%n%n", totalSale);
-
+        return totalSale;
     }
 
     public static void printAfterSalePrice(Foods foods, int totalSale){
@@ -80,17 +82,17 @@ public class OutputView {
 
     }
 
-    public static void printBadgeEvent(int totalSale){
+    public static void printBadgeEvent(int totalBenefit){
         System.out.println("<12월 이벤트 배지>");
-        if(totalSale>=20000){
+        if(totalBenefit>=20000){
             System.out.println("산타");
             return;
         }
-        if(totalSale>=10000){
+        if(totalBenefit>=10000){
             System.out.println("트리");
             return;
         }
-        if(totalSale>=5000){
+        if(totalBenefit>=5000){
             System.out.println("별");
             return;
         }

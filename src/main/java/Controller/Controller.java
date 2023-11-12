@@ -22,9 +22,9 @@ public class Controller {
         OutputView.printTotalPrice(foods);
         OutputView.printFreeItem(foods);
         int totalSale=OutputView.printSalePrices(foods, day, 25000);
-        OutputView.printTotalSalePrice(foods, totalSale, 25000);
+        int totalBenefit=OutputView.printTotalBenefitPrice(foods, totalSale, 25000);
         OutputView.printAfterSalePrice(foods, totalSale);
-        OutputView.printBadgeEvent(totalSale);
+        OutputView.printBadgeEvent(totalBenefit);
     }
 
 
