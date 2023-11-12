@@ -35,6 +35,9 @@ public class Foods {
 
     }
 
+    public List<Food> getFoodList(){
+        return orderedFoods;
+    }
     public boolean freeItemEvent(){
         int sum= gettotalFoodPrice();
         return (sum>=FREEITEM_EVENT_PRICE);
