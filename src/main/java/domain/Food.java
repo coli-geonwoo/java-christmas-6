@@ -1,5 +1,7 @@
 package domain;
 
+import View.NumValidator;
+
 import java.util.*;
 
 import static View.Messages.UNVALID_ORDER_MESSAGE;
@@ -14,11 +16,16 @@ public class Food {
     private int cnt;
 
     public Food(String name, String cnt){
-        Menu menu= findMenu(name);
-        this.name= menu.getName();
-        this.cnt= checkValidCnt(cnt);
-        this.price=menu.getPrice();
-        this.category= menu.getCategory();
+        try {
+            Menu menu = findMenu(name);
+            this.name = menu.getName();
+            this.cnt = checkValidCnt(cnt);
+            this.price = menu.getPrice();
+            this.category = menu.getCategory();
+        }
+        catch(IllegalArgumentException e){
+            throw new IllegalArgumentException(UNVALID_ORDER_MESSAGE);
+        }
     }
     public String getName(){
         return name;
@@ -44,8 +51,8 @@ public class Food {
         throw new IllegalArgumentException(UNVALID_ORDER_MESSAGE);
     }
     private int checkValidCnt(String cnt){
-        int num = checkIsNumber(cnt,1);
-        checkCntRange(num);
+        int num = NumValidator.checkIsNumber(cnt,1);
+        NumValidator.checkCntRange(num);
         return num;
     }
 }

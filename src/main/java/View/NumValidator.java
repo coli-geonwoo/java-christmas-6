@@ -16,8 +16,10 @@ public class NumValidator {
         }
         catch(NumberFormatException e) {
             if (flag == 0) {
+                System.out.println(UNVALID_DATE_MESSAGE);
                 throw new IllegalArgumentException(UNVALID_DATE_MESSAGE);
             }
+            System.out.println(UNVALID_ORDER_MESSAGE);
             throw new IllegalArgumentException(UNVALID_ORDER_MESSAGE);
         }
     }

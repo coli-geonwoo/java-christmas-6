@@ -15,9 +15,14 @@ public class InputView {
     public static int readDate() {
         System.out.println(INPUT_DATE_MESSAGE);
         String input = Console.readLine();
-        int num= checkIsNumber(input.strip(),0);
-        checkDateRange(num);
-        return num;
+        try {
+            int num = checkIsNumber(input.strip(), 0);
+            checkDateRange(num);
+            return num;
+        }
+        catch(IllegalArgumentException e){
+            return readDate();
+        }
     }
 
     public static Foods readOrder(){
@@ -26,16 +31,20 @@ public class InputView {
 
         String input= Console.readLine();
         String [] orderTokens= input.strip().split(",");
-
-        for(String token : orderTokens){
-            String[] order= token.split("-");
-            checkOrder(order);
-            Food food= new Food(order[0], order[1]);
-            temp.appendFood(food);
+        try{
+            for(String token : orderTokens){
+                String[] order= token.split("-");
+                checkOrder(order);
+                Food food= new Food(order[0], order[1]);
+                temp.appendFood(food);
+            }
+            checkOrderCnt(temp);
+            checkOrderNotOnlyDrink(temp);
+            return temp;
         }
-        checkOrderCnt(temp);
-        checkOrderNotOnlyDrink(temp);
-        return temp;
+        catch(IllegalArgumentException e){
+            return readOrder();
+        }
     }
 
     private static void checkOrder(String [] order){
