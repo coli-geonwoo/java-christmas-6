@@ -1,10 +1,10 @@
 package domain;
 
-public enum  Menu {
+public enum Menu {
     MUSHROOMSOUP("양송이수프", 6000, "APPETIZER"),
     TAPAS("타파스", 5500, "APPETIZER"),
     SALAD("시저샐러드", 8000, "APPETIZER"),
-    TBORN("티본스테이크",55000, "MAIN"),
+    TBORN("티본스테이크", 55000, "MAIN"),
     BARBEQUE("바비큐립", 54000, "MAIN"),
     SEAFOODPASTA("해산물파스타", 35000, "MAIN"),
     CHRISTMAXPASTA("크리스마스파스타", 25000, "MAIN"),
@@ -17,13 +17,22 @@ public enum  Menu {
     private String name;
     private int price;
     private String category;
-    Menu(String name, int price, String category){
-        this.name= name;
-        this.price=price;
-        this.category= category;
+
+    Menu(String name, int price, String category) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
     }
 
-    public int getPrice(){return price;}
-    public String getCategory(){return category;}
-    public String getName(){ return name;}
+    public int getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
