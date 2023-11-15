@@ -5,6 +5,7 @@ import View.OutputView;
 import domain.*;
 
 import static View.Constants.FREEITEM_COST;
+import static View.Messages.FIRST_MENT;
 
 public class Controller {
     private static int day;
@@ -16,6 +17,7 @@ public class Controller {
     }
 
     private static void readDayandMenu() {
+        System.out.println(FIRST_MENT);
         day = InputView.readDate();
         foods = InputView.readOrder();
     }
