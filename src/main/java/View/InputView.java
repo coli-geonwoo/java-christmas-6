@@ -33,25 +33,32 @@ public class InputView {
         try {
             for (String token : orderTokens) {
                 String[] order = token.split("-");
-                checkOrder(order);
-                Food food = new Food(order[0], order[1]);
-                temp.appendFood(food);
+                temp.appendFood(makeFoodobj(order));
             }
-            checkOrderCnt(temp);
-            checkOrderNotOnlyDrink(temp);
+            checkAllOrder(temp);
             return temp;
         } catch (IllegalArgumentException e) {
             return readOrder();
         }
     }
 
-    private static void checkOrder(String[] order) {
+    private static Food makeFoodobj(String [] order){
+        checkOrderForm(order);
+        Food food= new Food(order[0], order[1]);
+        return food;
+    }
+
+    private static void checkOrderForm(String[] order) {
         if (order.length != 2) {
             Messages.unValidOrderException();
             throw new IllegalArgumentException();
         }
     }
 
+    private static void checkAllOrder(Foods foods){
+        checkOrderCnt(foods);
+        checkOrderNotOnlyDrink(foods);
+    }
     private static void checkOrderCnt(Foods food) {
         if (food.gettotalFoodCnt() < MAX_ORDER_ITEM_CNT) {
             return;
