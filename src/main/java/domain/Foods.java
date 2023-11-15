@@ -1,12 +1,12 @@
 package domain;
 
+import View.Messages;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static View.Constants.FREEITEM_EVENT_PRICE;
-import static View.Messages.UNVALID_ORDER_MESSAGE;
-
 
 public class Foods {
     private List<Food> orderedFoods = new ArrayList<>();
@@ -79,7 +79,8 @@ public class Foods {
         List<String> names= orderedFoods.stream().map(Food::getName).collect(Collectors.toList());
 
         if (names.contains(name)){
-            throw new IllegalArgumentException(UNVALID_ORDER_MESSAGE);
+            Messages.duplicatedException();
+            throw new IllegalArgumentException();
         }
     }
 

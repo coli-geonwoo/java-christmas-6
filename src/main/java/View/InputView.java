@@ -49,7 +49,8 @@ public class InputView {
 
     private static void checkOrder(String [] order){
         if(order.length!=2){
-            throw new IllegalArgumentException(UNVALID_ORDER_MESSAGE);
+            Messages.unValidOrderException();
+            throw new IllegalArgumentException();
         }
     }
 
@@ -57,7 +58,8 @@ public class InputView {
         if(food.gettotalFoodCnt()<MAX_ORDER_ITEM_CNT){
             return;
         }
-        throw new IllegalArgumentException(UNVALID_ORDER_MESSAGE);
+        Messages.tooMuchMenuException();
+        throw new IllegalArgumentException();
     }
 
     private static void checkOrderNotOnlyDrink(Foods food){
@@ -66,7 +68,8 @@ public class InputView {
         if(categoryCnt[0]!=0 || categoryCnt[1]!=0 || categoryCnt[2]!=0){
             return;
         }
-        throw new IllegalArgumentException(UNVALID_ORDER_MESSAGE);
+        Messages.notEnoughMenuExcepiton();
+        throw new IllegalArgumentException();
     }
 
 }

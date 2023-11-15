@@ -1,8 +1,5 @@
 package View;
 
-import static View.Messages.UNVALID_DATE_MESSAGE;
-import static View.Messages.UNVALID_ORDER_MESSAGE;
-
 public class NumValidator {
 
     private static final int MONTH_START_DATE=1;
@@ -16,23 +13,25 @@ public class NumValidator {
         }
         catch(NumberFormatException e) {
             if (flag == 0) {
-                System.out.println(UNVALID_DATE_MESSAGE);
-                throw new IllegalArgumentException(UNVALID_DATE_MESSAGE);
+                Messages.isNotNumberException_1();
+                throw new IllegalArgumentException();
             }
-            System.out.println(UNVALID_ORDER_MESSAGE);
-            throw new IllegalArgumentException(UNVALID_ORDER_MESSAGE);
+            Messages.isNotNumberException_2();
+            throw new IllegalArgumentException();
         }
     }
 
     public static void checkDateRange(int input){
         if (input <MONTH_START_DATE || input>MONTH_END_DATE){
-            throw new IllegalArgumentException(UNVALID_DATE_MESSAGE);
+            Messages.rangeException();
+            throw new IllegalArgumentException();
         }
     }
 
     public static void checkCntRange(int input){
         if(input<minCnt){
-            throw new IllegalArgumentException(UNVALID_DATE_MESSAGE);
+            Messages.rangeException();
+            throw new IllegalArgumentException();
         }
     }
 

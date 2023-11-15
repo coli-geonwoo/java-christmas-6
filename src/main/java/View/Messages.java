@@ -9,4 +9,30 @@ public class Messages {
     public static final String FREEITEM_EVENT_MESSAGE="샴페인 1개";
     public static final String NOTHING="없음\n\n";
 
+    public static void isNotNumberException_1(){
+        System.out.println(UNVALID_DATE_MESSAGE);
+    }
+    public static void rangeException(){
+        System.out.println(UNVALID_DATE_MESSAGE);
+    }
+    public static void isNotNumberException_2(){
+        System.out.println(UNVALID_ORDER_MESSAGE);
+    }
+
+    public static void unValidOrderException(){
+        System.out.println(UNVALID_ORDER_MESSAGE);
+    }
+
+    public static void notEnoughMenuExcepiton(){
+        System.out.println(UNVALID_ORDER_MESSAGE);
+    }
+    public static void tooMuchMenuException(){
+        System.out.println(UNVALID_ORDER_MESSAGE);
+    }
+    public static void cannotFindMenuException(){
+        System.out.println(UNVALID_ORDER_MESSAGE);
+    }
+    public static void duplicatedException(){
+        System.out.println(UNVALID_ORDER_MESSAGE);
+    }
 }
